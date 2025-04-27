@@ -14,7 +14,7 @@
         }
 
         body {
-            font-family: 'Poppins', 'Roboto', sans-serif;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #fff, #ffe0ef);
             color: #333;
             min-height: 100vh;
@@ -55,9 +55,10 @@
             color: #fff;
             text-decoration: none;
             margin: 0 1.5rem;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         nav a:hover {
@@ -87,6 +88,13 @@
             box-shadow: 0 12px 24px rgba(177, 15, 86, 0.3);
         }
 
+        .card h2 {
+            text-align: center;
+            border-bottom: 2px solid #b10f56;
+            border-width: 0 0 2px 0;
+            border-left: #b10f56 solid 2px;
+        }
+
         h2 {
             color: #b10f56;
             margin-bottom: 1rem;
@@ -114,12 +122,15 @@
             font-size: 1rem;
             outline: none;
             transition: border-color 0.3s ease;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         input:focus,
         select:focus,
         textarea:focus {
             border-color: #b10f56;
+            box-shadow: 0 0 5px rgba(177, 15, 86, 0.5);
+            transform: scaleX(1.01);
         }
 
         button {
@@ -134,6 +145,7 @@
             position: relative;
             overflow: hidden;
             transition: background 0.3s ease, transform 0.3s ease;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         button::after {
@@ -186,6 +198,11 @@
             font-size: 0.95rem;
         }
 
+        .review-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(177, 15, 86, 0.3);
+        }
+
         footer {
             background: #b10f56;
             color: white;
@@ -230,6 +247,41 @@
                 opacity: 1;
             }
         }
+
+        option {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #b10f56;
+            font-weight: bold;
+            padding: 0.5rem;
+            background: #ffe0ef;
+            border: 1px solid #b10f56;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        option:hover {
+            background: #ff6699;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        select {
+            appearance: none;
+            background: linear-gradient(135deg, #ffe0ef, #fff);
+            border: 1px solid #b10f56;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #b10f56;
+            font-weight: bold;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #ff6699;
+            box-shadow: 0 0 8px rgba(255, 102, 153, 0.5);
+        }
     </style>
 </head>
 
@@ -253,19 +305,31 @@
             <p>Join one of the best institutions in India! Fill out the form below to apply for the Amrita Vishwa
                 Vidyapeetham, Nagercoil Campus.</p>
 
-            <form id="enroll-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <select required>
+            <form id="enroll-form"
+                style="display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.5rem; align-items: center;">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" placeholder="Full Name" required>
+
+                <label for="email-address">Email Address:</label>
+                <input type="email" id="email-address" placeholder="Email Address" required>
+
+                <label for="phone-number">Phone Number:</label>
+                <input type="tel" id="phone-number" placeholder="Phone Number" required>
+
+                <label for="program-select">Select Program:</label>
+                <select id="program-select" required>
                     <option value="">Select Program</option>
                     <option value="btech">B.Tech</option>
                     <option value="mtech">M.Tech</option>
                     <option value="mba">MBA</option>
                     <option value="phd">Ph.D</option>
                 </select>
-                <textarea rows="4" placeholder="Why do you want to join Amrita? (Optional)"></textarea>
-                <button type="submit">Submit Application</button>
+
+                <label for="reason">Why do you want to join Amrita? (Optional):</label>
+                <textarea id="reason" rows="4" placeholder="Why do you want to join Amrita? (Optional)"></textarea>
+
+                <div></div>
+                <button type="submit" style="grid-column: span 2;">Submit Application</button>
             </form>
         </section>
 
@@ -297,6 +361,21 @@
                 <div class="review-card">
                     <h4>⭐️⭐️⭐️⭐️⭐️ - Meera K.</h4>
                     <p>"The atmosphere is very peaceful, and the college encourages research and innovation."</p>
+                </div>
+                <div class="review-card">
+                    <h4>⭐️⭐️⭐️⭐️⭐️ - Priya M.</h4>
+                    <p>"Amrita Nagercoil Campus provides an excellent blend of academics and extracurricular activities.
+                        The faculty is very supportive and approachable."</p>
+                </div>
+                <div class="review-card">
+                    <h4>⭐️⭐️⭐️⭐️⭐️ - Arjun T.</h4>
+                    <p>"The campus is well-equipped with modern facilities, and the placement opportunities are
+                        outstanding. I am grateful for the guidance I received here."</p>
+                </div>
+                <div class="review-card">
+                    <h4>⭐️⭐️⭐️⭐️⭐️ - Sneha L.</h4>
+                    <p>"A great place to learn and grow. The serene environment and the focus on research make it a
+                        unique institution."</p>
                 </div>
             </div>
         </section>
